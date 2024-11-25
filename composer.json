@@ -1,0 +1,27 @@
+{
+    "name": "bethuxs/blade-bootstrap-components",
+    "description": "Bootstrap 5 components for Laravel Blade",
+    "type": "library",
+    "require": {
+        "laravel/framework": "^11.0.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bethuxs\\BladeBootstrapComponents\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Bethuxs\\BladeBootstrapComponents\\Providers\\ComponentServiceProvider"
+          ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Alberto Sanchez",
+            "email": "alberroteran@gmail.com"
+        }
+    ]
+}

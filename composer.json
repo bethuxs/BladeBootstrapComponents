@@ -3,7 +3,9 @@
     "description": "Bootstrap 5 components for Laravel Blade",
     "type": "library",
     "require": {
-        "laravel/framework": "^11.0.0"
+        "laravel/framework": "^11.0.0",
+        "php": "^8.0",
+        "spatie/laravel-flash": "^1.10"
     },
     "license": "MIT",
     "autoload": {

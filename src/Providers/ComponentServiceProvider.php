@@ -4,6 +4,8 @@ namespace Bethuxs\BladeBootstrapComponents\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 
+use Illuminate\Pagination\Paginator;
+
 class ComponentServiceProvider extends ServiceProvider
 {
     public function boot()
@@ -16,6 +18,9 @@ class ComponentServiceProvider extends ServiceProvider
             'warning' => 'alert-warning',
             'error' => 'alert-error',
         ]);
+
+        // change the paginator to use bootstrap 5
+        Paginator::useBootstrapFive();
     }
 
     public function register()

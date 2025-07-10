@@ -16,6 +16,8 @@ class Input extends Component
         $this->type = $type;
         $this->name = $name;
         $this->value = $value;
+        $this->label = $label;
+        $this->placeholder = $placeholder;
     }
 
     public function render()

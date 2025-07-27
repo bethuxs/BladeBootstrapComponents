@@ -1,8 +1,16 @@
 @props([
   'label',
-  'contextual' => 'primary'
+  'contextual' => 'primary',
+  'size' => null
 ])
 
-<button {{$attributes->class(['btn', "btn-$contextual"])}}>
+@php
+  $classes = ['btn', "btn-$contextual"];
+  if ($size) {
+    $classes[] = "btn-$size";
+  }
+@endphp
+
+<button {{$attributes->class($classes)}}>
   {{$label ?? $slot}}
 </button>

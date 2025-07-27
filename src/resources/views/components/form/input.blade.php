@@ -1,3 +1,8 @@
+@props([
+  'label' => null,
+  'name' => null,
+  'value' => null,
+])
 @if($label)
   <label for="{{$name}}">{{ $label }}</label>
 @endif

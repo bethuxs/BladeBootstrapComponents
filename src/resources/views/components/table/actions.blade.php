@@ -12,7 +12,7 @@
         </a>
     @endif
     @if(isset($deleteRoute))
-        <form action="{{ $deleteRoute }}" method="POST" style="display:inline-block" onsubmit="return confirm('¿Estás seguro?')">
+        <form action="{{ $deleteRoute }}" method="POST" style="display:inline-block" onsubmit="return confirm('{{ __('Are you sure?') }}')">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">

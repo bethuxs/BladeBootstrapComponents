@@ -17,7 +17,7 @@ A lightweight and flexible library of Blade components designed to integrate sea
 
 ### Requirements
 
-- **Laravel**: 8.x or higher (Tested with Laravel 11)
+- **Laravel**: 11.x (PHP 8.0+)
 - **PHP**: 8.0 or higher
 - **Bootstrap**: 5.x
 
@@ -29,11 +29,7 @@ A lightweight and flexible library of Blade components designed to integrate sea
    composer require bethuxs/blade-bootstrap-components
    ```
 
-2. Publish the configuration and component files:
-
-   ```bash
-   php artisan vendor:publish --provider="Bethuxs\BladeBootstrapComponents\BladeBootstrapComponentsServiceProvider"
-   ```
+2. The components are automatically registered. No need to publish!
 
 3. Include the Bootstrap 5 assets in your application:
 

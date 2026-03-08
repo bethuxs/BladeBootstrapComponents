@@ -1,7 +1,8 @@
 @props([
   'label',
   'contextual' => 'primary',
-  'size' => null
+  'size' => null,
+  'type' => 'button',
 ])
 
 @php
@@ -11,6 +12,6 @@
   }
 @endphp
 
-<button {{$attributes->class($classes)}}>
-  {{$label ?? $slot}}
+<button type="{{ $type }}" {{ $attributes->class($classes) }}>
+  {{ $label ?? $slot }}
 </button>

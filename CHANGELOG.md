@@ -2,9 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-03-08
+
+### Added
+- 🧪 **Pest Testing Framework** - Comprehensive test suite with 50+ tests
+  - Feature tests for all form components
+  - Feature tests for all UI components
+  - Feature tests for all layout components
+  - Unit tests for CountriesHelper
+  - Custom Pest expectations: `toContainHtml()`, `toHaveAttribute()`
+- 🔍 **PHPStan Static Analysis** - Code quality checks at level 8
+- 🤖 **GitHub Actions CI/CD** - Automated testing on PHP 8.0, 8.1, 8.2, 8.3
+- 📖 **TESTING.md** - Complete testing documentation
+- 📝 **composer.json scripts** - `test`, `test:coverage`, `analyze` commands
+
 ## [1.1.0] - 2026-03-07
 
 ### Added
+- ✨ **17 Basic Bootstrap 5 Components**
+  - Form: checkbox, radio, checkbox-group, radio-group, file
+  - Layout: card, tabs, accordion, collapse, dropdown, list-group, navbar, pagination, offcanvas, empty-state, skeleton
 - ✨ **Alert Component** (`<x-bs::alert`) - Dismissible alert boxes with multiple types
 - ✨ **Modal Component** (`<x-bs::modal`) - Bootstrap modal dialogs with customizable sizes
 - ✨ **Badge Component** (`<x-bs::badge`) - Badge/label component with variants and pill style
@@ -13,11 +30,6 @@ All notable changes to this project will be documented in this file.
 - ✨ **Breadcrumb Component** (`<x-bs::breadcrumb`) - Navigation breadcrumb with active states
 - ✨ **Error Message Component** (`<x-bs::messages.error`) - Field-specific error display
 - ✨ **CountriesHelper Utility Class** - Helper functions for working with country data
-  - `CountriesHelper::all()` - Get all countries
-  - `CountriesHelper::asOptions()` - Get formatted select options
-  - `CountriesHelper::asEmojiOptions()` - Get emoji-based options
-  - `CountriesHelper::findByIso()` - Search country by ISO code
-  - `CountriesHelper::findByEmoji()` - Search country by emoji
 - 📚 **EXAMPLES.md** - Comprehensive examples for all components
 - 📝 **Enhanced README** - Complete documentation with all components and usage examples
 

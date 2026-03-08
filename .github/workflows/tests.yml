@@ -1,0 +1,44 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: ["8.0", "8.1", "8.2", "8.3"]
+        laravel: ["11.*"]
+
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Run tests
+        run: composer test
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        if: matrix.php == '8.3'
+        with:
+          file: ./coverage/coverage.xml
+          fail_ci_if_error: false

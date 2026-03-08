@@ -1,0 +1,19 @@
+<?php
+
+root: .
+testPath: tests
+srcPath: src
+bootstrap: tests/bootstrap.php
+
+# Coverage configuration
+coverage:
+  driver: xdebug
+  path: coverage
+  report: html
+  exclude:
+    - bootstrap.php
+    - Providers
+
+# Parallel execution
+parallel:
+  testCount: 4

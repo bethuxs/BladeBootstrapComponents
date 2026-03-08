@@ -7,11 +7,22 @@
         "php": "^8.0",
         "spatie/laravel-flash": "^1.10"
     },
+    "require-dev": {
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-laravel": "^2.4",
+        "phpstan/phpstan": "^1.10",
+        "orchestra/testbench": "^9.0"
+    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Bethuxs\\BladeBootstrapComponents\\": "src/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test:coverage": "vendor/bin/pest --coverage",
+        "analyze": "vendor/bin/phpstan analyse"
     },
     "extra": {
         "laravel": {

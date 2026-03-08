@@ -1,31 +1,45 @@
 <?php
+
 namespace Bethuxs\BladeBootstrapComponents\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Blade;
-
+use Bethuxs\BladeBootstrapComponents\CountriesHelper;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+use Spatie\Flash\Flash;
 
 class ComponentServiceProvider extends ServiceProvider
 {
-    public function boot()
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'bs');
-        // for the flash messages
-        \Spatie\Flash\Flash::levels([
+
+        // Configure Flash Messages
+        Flash::levels([
             'success' => 'alert-success',
             'warning' => 'alert-warning',
-            'error' => 'alert-error',
+            'error' => 'alert-danger',
         ]);
 
-        // change the paginator to use bootstrap 5
+        // Use Bootstrap 5 for pagination
         Paginator::useBootstrapFive();
 
+        // Register anonymous components namespace
         Blade::anonymousComponentNamespace('bs::components', 'bs');
+
+        // Share CountriesHelper globally
+        Blade::macro('countries', fn() => CountriesHelper::class);
     }
 
-    public function register()
+    /**
+     * Register any application services.
+     */
+    public function register(): void
     {
         //
     }
 }
+

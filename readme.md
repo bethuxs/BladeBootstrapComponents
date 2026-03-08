@@ -165,6 +165,108 @@ Select component pre-filled with world countries.
 
 ---
 
+#### `<x-bs::form.checkbox`
+Single checkbox input with label.
+
+```blade
+<x-bs::form.checkbox
+  name="agree"
+  label="I agree to the terms"
+  value="1"
+/>
+```
+
+**Props:**
+- `name` (required) - Checkbox name
+- `label` (string) - Checkbox label
+- `value` (mixed) - Checkbox value
+- `checked` (bool, default: `false`) - Is checked
+
+---
+
+#### `<x-bs::form.radio`
+Single radio button input.
+
+```blade
+<x-bs::form.radio
+  name="gender"
+  label="Male"
+  value="male"
+/>
+```
+
+**Props:**
+- `name` (required) - Radio name
+- `label` (string) - Radio label
+- `value` (mixed, required) - Radio value
+- `checked` (bool) - Is checked
+
+---
+
+#### `<x-bs::form.checkbox-group`
+Multiple checkboxes with label.
+
+```blade
+<x-bs::form.checkbox-group
+  name="interests"
+  label="Your Interests"
+  :options="['sports' => 'Sports', 'music' => 'Music', 'reading' => 'Reading']"
+  :values="old('interests', [])"
+  inline
+/>
+```
+
+**Props:**
+- `name` (required) - Group name (stored as array)
+- `label` (string) - Group label
+- `options` (array, default: `[]`) - Options key => value
+- `values` (array, default: `[]`) - Selected values
+- `inline` (bool, default: `false`) - Display inline
+
+---
+
+#### `<x-bs::form.radio-group`
+Multiple radio buttons with label.
+
+```blade
+<x-bs::form.radio-group
+  name="level"
+  label="Skill Level"
+  :options="['beginner' => 'Beginner', 'intermediate' => 'Intermediate', 'advanced' => 'Advanced']"
+  value="{{ old('level') }}"
+  inline
+/>
+```
+
+**Props:**
+- `name` (required) - Group name
+- `label` (string) - Group label
+- `options` (array, default: `[]`) - Options key => value
+- `value` (mixed) - Selected value
+- `inline` (bool, default: `false`) - Display inline
+
+---
+
+#### `<x-bs::form.file`
+File input with validation support.
+
+```blade
+<x-bs::form.file
+  name="avatar"
+  label="Profile Picture"
+  accept="image/*"
+  multiple
+/>
+```
+
+**Props:**
+- `name` (required) - File input name
+- `label` (string) - Input label
+- `accept` (string) - Accepted file types
+- `multiple` (bool, default: `false`) - Allow multiple files
+
+---
+
 ### Message Components
 
 #### `<x-bs::messages.all`
@@ -339,6 +441,197 @@ Action buttons for table rows.
 - `viewRoute` (string) - View link (optional)
 - `editRoute` (string) - Edit link (optional)
 - `deleteRoute` (string) - Delete form action (optional, shows confirmation)
+
+---
+
+### Layout Components
+
+#### `<x-bs::card`
+Card component for content grouping.
+
+```blade
+<x-bs::card title="User Information" subtitle="Personal details">
+  <p>Content goes here</p>
+</x-bs::card>
+```
+
+**Props:**
+- `title` (string) - Card title
+- `subtitle` (string) - Card subtitle
+- `footer` (string) - Footer content
+
+---
+
+#### `<x-bs::tabs`
+Tabbed interface with content.
+
+```blade
+<x-bs::tabs :items="[
+  [
+    'id' => 'tab1',
+    'label' => 'Tab 1',
+    'content' => '<p>Content 1</p>',
+    'active' => true,
+  ],
+  [
+    'id' => 'tab2',
+    'label' => 'Tab 2',
+    'content' => '<p>Content 2</p>',
+  ],
+]" />
+```
+
+**Props:**
+- `items` (array, required) - Tab items with id, label, content, active
+
+---
+
+#### `<x-bs::accordion`
+Collapsible accordion component.
+
+```blade
+<x-bs::accordion id="myAccordion" :items="[
+  [
+    'title' => 'Section 1',
+    'content' => '<p>Content 1</p>',
+    'open' => true,
+  ],
+  [
+    'title' => 'Section 2',
+    'content' => '<p>Content 2</p>',
+  ],
+]" />
+```
+
+**Props:**
+- `items` (array, required) - Accordion items with title, content, id, open
+- `flush` (bool, default: `false`) - Remove borders
+
+---
+
+#### `<x-bs::collapse`
+Collapse/expandable section.
+
+```blade
+<x-bs::collapse title="Show Details">
+  <p>Detailed content here</p>
+</x-bs::collapse>
+```
+
+**Props:**
+- `title` (string) - Collapse header text
+- `id` (string) - Unique ID
+
+---
+
+#### `<x-bs::dropdown`
+Dropdown menu component.
+
+```blade
+<x-bs::dropdown label="Actions" :items="[
+  ['label' => 'Edit', 'url' => '#edit'],
+  ['label' => 'Delete', 'url' => '#delete'],
+  ['divider' => true],
+  ['label' => 'Settings', 'url' => '#settings'],
+]" />
+```
+
+**Props:**
+- `label` (string, required) - Button label
+- `items` (array) - Menu items with label, url, divider, header
+- `split` (bool) - Split dropdown button
+
+---
+
+#### `<x-bs::list-group`
+List group component with optional badges.
+
+```blade
+<x-bs::list-group :items="[
+  ['id' => '1', 'label' => 'Item 1', 'url' => '#1', 'active' => true],
+  ['id' => '2', 'label' => 'Item 2', 'url' => '#2', 'badge' => 'New'],
+]" />
+```
+
+**Props:**
+- `items` (array) - List items with label, url, badge, id, active
+- `flush` (bool) - Remove borders
+- `active` (string) - Active item id
+
+---
+
+#### `<x-bs::navbar`
+Navigation bar component.
+
+```blade
+<x-bs::navbar brand="MyApp" :items="[
+  ['id' => 'home', 'label' => 'Home', 'url' => route('home')],
+  ['id' => 'about', 'label' => 'About', 'url' => route('about')],
+]" dark />
+```
+
+**Props:**
+- `brand` (string) - Brand name
+- `brandUrl` (string, default: `"/"`) - Brand link
+- `items` (array) - Navigation items
+- `dark` (bool) - Dark theme
+- `active` (string) - Active item id
+
+---
+
+#### `<x-bs::pagination`
+Paginated results navigation.
+
+```blade
+<x-bs::pagination :paginator="$users" />
+```
+
+**Props:**
+- `paginator` (LengthAwarePaginator) - Laravel paginator instance
+
+---
+
+#### `<x-bs::offcanvas`
+Offcanvas sidebar component.
+
+```blade
+<x-bs::offcanvas id="sidebar" title="Menu" placement="start">
+  <p>Sidebar content</p>
+</x-bs::offcanvas>
+```
+
+**Props:**
+- `id` (required) - Unique ID
+- `title` (string) - Sidebar title
+- `placement` (string, default: `"start"`) - Position (start, end, top, bottom)
+- `backdrop` (bool, default: `true`) - Hide on backdrop click
+
+---
+
+#### `<x-bs::empty-state`
+Empty state placeholder.
+
+```blade
+<x-bs::empty-state title="No results">
+  Try adjusting your search terms
+</x-bs::empty-state>
+```
+
+**Props:**
+- `title` (string) - Empty state title
+
+---
+
+#### `<x-bs::skeleton`
+Loading skeleton placeholder.
+
+```blade
+<x-bs::skeleton height="100px" count="3" />
+```
+
+**Props:**
+- `height` (string, default: `"100px"`) - Skeleton height
+- `count` (int, default: `3`) - Number of skeletons
 
 ---
 

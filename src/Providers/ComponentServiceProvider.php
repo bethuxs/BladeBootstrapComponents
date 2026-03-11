@@ -31,7 +31,7 @@ class ComponentServiceProvider extends ServiceProvider
         Blade::anonymousComponentNamespace('bs::components', 'bs');
 
         // Share CountriesHelper globally
-        Blade::macro('countries', fn() => CountriesHelper::class);
+        Blade::macro('countries', fn() => app(CountriesHelper::class));
     }
 
     /**

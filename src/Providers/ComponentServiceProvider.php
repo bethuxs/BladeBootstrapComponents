@@ -30,8 +30,10 @@ class ComponentServiceProvider extends ServiceProvider
         // Register anonymous components namespace
         Blade::anonymousComponentNamespace('bs::components', 'bs');
 
-        // Share CountriesHelper globally
-        view()->share('countries', app(CountriesHelper::class));
+        // Share CountriesHelper globally through view data
+        $this->callAfterResolving('view', function ($view) {
+            $view->share('countries', CountriesHelper::class);
+        });
     }
 
     /**
